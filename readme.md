@@ -1,9 +1,11 @@
 ## 1.整个赛题的解决思路以及用到的数据处理方法
 ### 解决思路与引用介绍
+*解决第四届计算机能力挑战赛大数据与人工智能赛题*
 搭建VGG孪生网络训练所给数据集得到模型`train_net.pth`，并使用Facenet-PyTorch框架训练适应于赛题的模型`facenet_mobilenet_test.pth`，预测时按一定比例就行模型融合，分别所使用到的预训练模型`VGG Face`与`facenet_mobilenet.pth`，模型选取并参考代码于[https://www.kaggle.com/code/anki08/modified-siamese-network-pytorch](https://www.kaggle.com/code/anki08/modified-siamese-network-pytorch)和[https://github.com/bubbliiiing/facenet-pytorch](https://github.com/bubbliiiing/facenet-pytorch)。  
 其中在`init_data/train`下`data`存放竞赛提供的数据集，`dataset`下存放扩增的数据集，扩增的数据集节选自`CASIA-WebFace`，由[https://github.com/bubbliiiing/facenet-pytorch](https://github.com/bubbliiiing/facenet-pytorch)并对其就行一定的处理，以适应竞赛。    
 扩增的数据集百度网盘下载链接:[https://pan.baidu.com/s/1qMxFR8H_ih0xmY-rKgRejw](https://pan.baidu.com/s/1qMxFR8H_ih0xmY-rKgRejw)  
 提取码: bcrq。
+竞赛数据集自留了一份上传在google硬盘[https://drive.google.com/drive/folders/1WpK2yDjHdPS-MzC6sA3HBCLTZqgMlymG?usp=share_link](https://drive.google.com/drive/folders/1WpK2yDjHdPS-MzC6sA3HBCLTZqgMlymG?usp=share_link)
 ### 数据处理方法
 - 对`data`下数据
 先对图像去除黑色边框，对`a`类图像直接就行高斯滤波处理噪声，对`b`类图像先添加椒盐噪声再就行高斯滤波处理。分别对`a`图`b`图就行左右翻转，组合，将竞赛方提供的数据集扩增4倍。
