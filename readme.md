@@ -1,6 +1,6 @@
 ## 1.整个赛题的解决思路以及用到的数据处理方法
 ### 解决思路与引用介绍
-*解决第四届计算机能力挑战赛大数据与人工智能赛题*
+*解决第四届计算机能力挑战赛大数据与人工智能赛题*  
 搭建VGG孪生网络训练所给数据集得到模型`train_net.pth`，并使用Facenet-PyTorch框架训练适应于赛题的模型`facenet_mobilenet_test.pth`，预测时按一定比例就行模型融合，分别所使用到的预训练模型`VGG Face`与`facenet_mobilenet.pth`，模型选取并参考代码于[https://www.kaggle.com/code/anki08/modified-siamese-network-pytorch](https://www.kaggle.com/code/anki08/modified-siamese-network-pytorch)和[https://github.com/bubbliiiing/facenet-pytorch](https://github.com/bubbliiiing/facenet-pytorch)。  
 其中在`init_data/train`下`data`存放竞赛提供的数据集，`dataset`下存放扩增的数据集，扩增的数据集节选自`CASIA-WebFace`，由[https://github.com/bubbliiiing/facenet-pytorch](https://github.com/bubbliiiing/facenet-pytorch)并对其就行一定的处理，以适应竞赛。    
 扩增的数据集百度网盘下载链接:[https://pan.baidu.com/s/1qMxFR8H_ih0xmY-rKgRejw](https://pan.baidu.com/s/1qMxFR8H_ih0xmY-rKgRejw)  
@@ -226,10 +226,10 @@ code
 `predict.py`为自测试准确率文件。  
 `txt_annotation.py`为对dataset内训练集进行预处理文件。  
 `run.py`为提交分数最高的run文件，注意该文件不符合`my_project`文件路径，无法正常运行。
-- 模型介绍
+- 模型介绍  
 `VGG Face`为模型一的预训练权重
 `facenet_mobilenet.pth`为模型二的预训练权重
-模型放到google硬盘[https://drive.google.com/drive/folders/1Q3vKBLWDWLSz5uhOhchJj03NVpOjAX1g?usp=share_link](https://drive.google.com/drive/folders/1Q3vKBLWDWLSz5uhOhchJj03NVpOjAX1g?usp=share_link)
+模型权重放到google硬盘[https://drive.google.com/drive/folders/1Q3vKBLWDWLSz5uhOhchJj03NVpOjAX1g?usp=share_link](https://drive.google.com/drive/folders/1Q3vKBLWDWLSz5uhOhchJj03NVpOjAX1g?usp=share_link)
 ### 实现步骤
 在基础库上`pip install -r requirements.txt`安装一致版本的pytorch，opencv，以及细小工具不含有其它库(如果复现时发现还缺少什么其它的都是可以直接pip安装的，出现缺少的问题原因在环境里还包含其它库，requirements是手动输入的，但大概率与版本无关)。  
 将`init_data/train/datasets`下存放扩增数据集，网盘连接如前所示，将内容解压到datasets内，运行`txt_annotation.py`文件获得标签文件`cls_train.txt`在`init_data/train`目录下，这里使用的是绝对路径。运行`train.py`在各版版本匹配的情况下即可实现。
